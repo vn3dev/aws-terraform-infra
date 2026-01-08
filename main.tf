@@ -94,3 +94,32 @@ resource "aws_key_pair" "deployer" {
   key_name   = "aws-key"
   public_key = file(var.public_key_path)
 }
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"]
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
+  }
+}
+
+resource "aws_instance" "web_server" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro" # I chose t3.micro because i'm using AWS free tier
+
+  subnet_id                   = aws_subnet.public_subnet.id
+  vpc_security_group_ids      = [aws_security_group.main_sg.id]
+  key_name                    = aws_key_pair.deployer.key_name
+  associate_public_ip_address = true
+
+  tags = {
+    Name = "main-ec2-instance"
+  }
+}
+
+output "instance_public_ip" {
+  description = "Public IP to access the server"
+  value       = aws_instance.web_server.public_ip
+}
