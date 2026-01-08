@@ -1,8 +1,6 @@
-[**Português**](#br-portugues) | [**English**](#en-english)
+Check the english version [**here!**](#en-english)
 
 ---
-
-## <a name="br-portugues"></a>Português
 
 # Infraestrutura AWS com Terraform (IaC)
 
@@ -42,7 +40,7 @@ A infraestrutura é implantada na região **us-east-1** (**United States**) e in
    terraform plan
    terraform apply
 
-## <a name="en-english"></a>English
+## <a name="en-english"></a>English version:
 
 # AWS Infrastructure with Terraform (IaC)
 
