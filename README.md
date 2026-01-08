@@ -1,10 +1,12 @@
-# Infraestrutura AWS com Terraform (IaC)
-
 [**Português**](#br-portugues) | [**English**](#en-english)
 
 ---
 
 ## <a name="br-portugues"></a>Português
+
+# Infraestrutura AWS com Terraform (IaC)
+
+---
 
 Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services (AWS)** utilizando **Terraform** como ferramenta de **Infrastructure as Code (IaC)**.
 
@@ -40,13 +42,13 @@ A infraestrutura é implantada na região **us-east-1** (**United States**) e in
    terraform plan
    terraform apply
 
-# AWS Infrastructure with Terraform (IaC)
-
 ## <a name="en-english"></a>English
 
-This project demonstrates the deployment of a professional cloud infrastructure on **Amazon Web Services (AWS)** using **Terraform** as the **Infrastructure as Code (IaC)** tool.
+# AWS Infrastructure with Terraform (IaC)
 
 ---
+
+This project demonstrates the deployment of a professional cloud infrastructure on **Amazon Web Services (AWS)** using **Terraform** as the **Infrastructure as Code (IaC)** tool.
 
 ## 🏗️ Architecture Overview
 The infrastructure is deployed in the **us-east-1** region (**United States**) and includes:
@@ -72,7 +74,7 @@ Terraform successfully managed the creation of 8 integrated resources.
 ![Terraform Apply](img/Terminal1.png)
 
 ### 2. AWS Console
-Confirmation of the `main-ec2-instance` in **Running** state (Account ID hidden for security).
+Confirmation of the `main-ec2-instance` in **Running** state.
 ![AWS Console](img/Console1.png)
 
 ### 3. Remote Access (SSH)
