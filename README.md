@@ -1,7 +1,5 @@
 Check the english version [**here!**](#en-english)
 
----
-
 # Infraestrutura AWS com Terraform (IaC)
 
 ---
