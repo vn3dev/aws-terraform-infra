@@ -6,7 +6,7 @@ Check the english version [**here!**](#en-english)
 
 Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services (AWS)** utilizando **Terraform** como ferramenta de **Infrastructure as Code (IaC)**.
 
-### 🏗️ Visão Geral da Arquitetura
+## 🏗️ Visão Geral da Arquitetura
 A infraestrutura é implantada na região **us-east-1** (**United States**) e inclui:
 * **VPC:** Rede virtual isolada com bloco CIDR `10.0.0.0/16`.
 * **Public Subnet:** Segmento de rede `10.0.1.0/24` com mapeamento automático de IP público.
@@ -14,22 +14,32 @@ A infraestrutura é implantada na região **us-east-1** (**United States**) e in
 * **Security Group:** SSH (Porta 22) restrito ao meu IP e HTTP (Porta 80) aberto.
 * **EC2 Instance:** Servidor Ubuntu 24.04 LTS rodando em hardware `t3.micro` (**Free Tier**).
 
-### 🛠️ Tecnologias e Ferramentas
+## 🛠️ Tecnologias e Ferramentas
 * **Cloud:** AWS
 * **IaC:** Terraform
 * **Local OS:** Ubuntu 24.04 LTS via **WSL2** no Windows 10.
 * **Terminal:** **Windows Terminal**.
 * **Segurança:** **Windows Security** e Chaves SSH (ED25519).
 
-### 📸 Validação Visual
-1. **Provisionamento:** O Terraform gerenciou a criação de 8 recursos integrados.
-   ![Terraform Apply](img/Terminal1.png)
-2. **AWS Console:** Instância `main-ec2-instance` em estado **Running**.
-   ![AWS Console](img/Console1.png)
-3. **Acesso Remoto:** Sucesso na conexão SSH via **United States**.
-   ![SSH Access](img/Terminal2.png)
+---
 
-### 📖 Como Rodar
+## 📸 Validação Visual
+
+### 1. Provisionamento (Terraform Apply)
+O Terraform gerenciou com sucesso a criação de 8 recursos integrados.
+![Terraform Apply](img/Terminal1.png)
+
+### 2. AWS Console
+Confirmação da instância `main-ec2-instance` em estado **Running**.
+![AWS Console](img/Console1.png)
+
+### 3. Acesso Remoto (SSH)
+Sucesso no login via SSH no servidor nos **United States**, confirmando a integridade das chaves e das regras de firewall.
+![SSH Access](img/Terminal2.png)
+
+---
+
+## 📖 Como Rodar
 1. **Configurar AWS CLI:** Execute `aws configure`.
 2. **Variáveis:** Crie um arquivo `terraform.tfvars` com seu IP: `my_public_ip = "seu.ip.aqui"`.
 3. **Comandos:**
