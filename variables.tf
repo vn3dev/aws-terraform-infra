@@ -8,3 +8,9 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
 }
+
+variable "public_key_path" {
+  description = "Public SSH key pathing"
+  type        = string
+  default     = "~/.ssh/aws-key.pub"
+}

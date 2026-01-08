@@ -89,3 +89,8 @@ ingress {
     Name = "main-sg"
   }
 }
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "aws-key"
+  public_key = file(var.public_key_path)
+}
