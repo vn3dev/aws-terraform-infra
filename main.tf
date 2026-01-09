@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = var.aws_region
-}
-
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -114,14 +101,7 @@ resource "aws_instance" "web_server" {
   key_name                    = aws_key_pair.deployer.key_name
   associate_public_ip_address = true
 
-  user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y nginx
-              systemctl start nginx
-              systemctl enable nginx
-              echo "<h1>Hello World!</h1>" > /var/www/html/index.html
-              EOF
+  user_data = file("scripts/install_nginx.sh")
 
   tags = {
     Name = "main-ec2-instance"
