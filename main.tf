@@ -107,8 +107,3 @@ resource "aws_instance" "web_server" {
     Name = "main-ec2-instance"
   }
 }
-
-output "instance_public_ip" {
-  description = "Public IP to access the server"
-  value       = aws_instance.web_server.public_ip
-}
