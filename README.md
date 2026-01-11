@@ -6,7 +6,9 @@ Check the english version [**here**](#en-english)!
 
 Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services** utilizando **Terraform** como ferramenta de **Infrastructure as Code**.
 
-### 1. Rede e Resiliência
+## Arquitetura e Detalhes Técnicos
+
+### 1. Rede
 * **VPC** Implementação de uma rede isolada CIDR `10.0.0.0/16`.
 * **Dynamic Availability Zones:** Uso de `Data Sources` para seleção automática da zona de disponibilidade.
 * **Conectividade:** Configuração de **Internet Gateway** e **Route Tables**.
@@ -64,7 +66,9 @@ Sucesso no login via SSH no servidor nos **Estados Unidos**, confirmando a integ
 
 This project demonstrates the provisioning of a professional cloud infrastructure on **Amazon Web Services** using **Terraform** as an **Infrastructure as Code** tool.
 
-### 1. Networking and Resilience
+## Architecture and Technical Details
+
+### 1. Networking
 * **VPC:** Implementation of an isolated CIDR `10.0.0.0/16` network.
 * **Dynamic Availability Zones:** Use of `Data Sources` for automatic selection of the availability zone.
 * **Connectivity:** Configuration of **Internet Gateway** and **Route Tables**.
