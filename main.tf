@@ -12,7 +12,6 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -107,6 +106,12 @@ resource "aws_instance" "web_server" {
   associate_public_ip_address = true
 
   user_data = file("scripts/install_nginx.sh")
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
+  }
 
   tags = {
     Name = "main-ec2-instance"
