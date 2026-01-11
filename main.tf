@@ -68,7 +68,7 @@ ingress {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["${var.my_public_ip}/32"] # lê a variável escondida no .gitignore
+    cidr_blocks      = ["${var.my_public_ip}/32"] # read hidden variable inside .gitignore
   }
 
   ingress {
