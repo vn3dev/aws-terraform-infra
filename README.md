@@ -4,7 +4,9 @@ Check the english version [**here**](#en-english)!
 
 ---
 
-Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services** utilizando **Terraform** como ferramenta de **Infrastructure as Code**.
+Este projeto constrói automaticamente um servidor web completo na nuvem da AWS. Em poucos segundos, o código cria uma rede privada segura, configura um computador virtual com travas de segurança modernas e já deixa um site pronto para rodar, eliminando a necessidade de qualquer configuração manual demorada no painel da AWS.
+
+A utilização do Terraform assegura que todo o ambiente seja replicado com exatidão e conformidade técnica. Este método elimina falhas inerentes a processos manuais, garantindo que as configurações de rede, os parâmetros de segurança e o provisionamento de recursos sigam um padrão rigoroso. O resultado é uma infraestrutura estável, documentada e preparada para suportar aplicações web com controle total sobre o tráfego e os acessos.
 
 ## Arquitetura e Detalhes Técnicos
 
@@ -64,7 +66,9 @@ Sucesso no login via SSH no servidor nos **Estados Unidos**, confirmando a integ
 
 ---
 
-This project demonstrates the provisioning of a professional cloud infrastructure on **Amazon Web Services** using **Terraform** as an **Infrastructure as Code** tool.
+This project automatically builds a complete web server in the AWS cloud. In seconds, the code creates a secure private network, configures a virtual computer with modern security locks, and sets up a website ready to run, eliminating the need for any time-consuming manual configuration in the AWS Management Console.
+
+The use of Terraform ensures that the entire environment is replicated with precision and technical compliance. This method eliminates errors inherent in manual processes, ensuring that network configurations, security parameters, and resource provisioning follow a rigorous standard. The result is a stable, documented infrastructure prepared to support web applications with full control over traffic and access.
 
 ## Architecture and Technical Details
 
