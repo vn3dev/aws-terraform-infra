@@ -4,7 +4,7 @@ Check the english version [**here**](#en-english)!
 
 ---
 
-Este projeto constrói automaticamente um servidor web completo na nuvem da AWS. Em poucos segundos, o código cria uma rede privada segura, configura um computador virtual com travas de segurança modernas e já deixa um site pronto para rodar, eliminando a necessidade de qualquer configuração manual demorada no painel da AWS.
+Este projeto constrói automaticamente um servidor web completo na nuvem da AWS. Em poucos segundos, o código cria uma rede privada segura, configura um computador virtual com travas de segurança modernas e já deixa uma aplicação pronta para rodar, eliminando a necessidade de qualquer configuração manual demorada no painel da AWS.
 
 A utilização do Terraform assegura que todo o ambiente seja replicado com exatidão e conformidade técnica. Este método elimina falhas inerentes a processos manuais, garantindo que as configurações de rede, os parâmetros de segurança e o provisionamento de recursos sigam um padrão rigoroso. O resultado é uma infraestrutura estável, documentada e preparada para suportar aplicações web com controle total sobre o tráfego e os acessos.
 
