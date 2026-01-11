@@ -1,31 +1,36 @@
-Check the english version [**here!**](#en-english)
+Check the english version [**here**](#en-english)!
 
-# Infraestrutura AWS com Terraform (IaC)
+# Infraestrutura AWS com Terraform
 
 ---
 
-Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services (AWS)** utilizando **Terraform** como ferramenta de **Infrastructure as Code (IaC)**.
+Este projeto demonstra o provisionamento de uma infraestrutura em nuvem profissional na **Amazon Web Services** utilizando **Terraform** como ferramenta de **Infrastructure as Code**.
 
-## 🏗️ Visão Geral da Arquitetura
-A infraestrutura é implantada na região **us-east-1** (**United States**) e inclui:
-* **VPC:** Rede virtual isolada com bloco CIDR `10.0.0.0/16`.
-* **Public Subnet:** Segmento de rede `10.0.1.0/24` com mapeamento automático de IP público.
-* **Internet Gateway:** Para permitir comunicação entre a VPC e a internet.
-* **Security Group:** SSH (Porta 22) restrito ao meu IP e HTTP (Porta 80) aberto.
-* **EC2 Instance:** Servidor Ubuntu 24.04 LTS rodando em hardware `t3.micro` (**Free Tier**).
+### 1. Rede e Resiliência
+* **VPC** Implementação de uma rede isolada CIDR `10.0.0.0/16`.
+* **Dynamic Availability Zones:** Uso de `Data Sources` para seleção automática da zona de disponibilidade.
+* **Conectividade:** Configuração de **Internet Gateway** e **Route Tables**.
 
-## 🛠️ Tecnologias e Ferramentas
+### 2. Segurança
+* **IMDSv2:** Configuração obrigatória de tokens para acesso a metadados da instância.
+* **Security Groups:** SSH (Porta 22) restrito ao meu IP e HTTP (Porta 80) aberto.
+* **Gestão de Chaves:** Uso de **Key Pairs** (RSA/ED25519) integrados para acesso seguro via **SSH** pelo **WSL2 Ubuntu**.
+
+### 3. Computação e Automação
+* **EC2 Instance** Provisionamento de servidor **Ubuntu 24.04 LTS** utilizando filtros dinâmicos de AMI, rodando em hardware `t3.micro` - **Free Tier**.
+* **User Data Scripting:** Automação completa do deploy do servidor Nginx durante o primeiro boot da instância.
+
+## Tecnologias e Ferramentas
 * **Cloud:** AWS
 * **IaC:** Terraform
 * **Local OS:** Ubuntu 24.04 LTS via **WSL2** no Windows 10.
-* **Terminal:** **Windows Terminal**.
-* **Segurança:** **Windows Security** e Chaves SSH (ED25519).
+* **Segurança:** **Windows Security** e Chaves SSH (ED25519) armazenadas no subsistema Linux.
 
 ---
 
-## 📸 Validação Visual
+## Snapshots
 
-### 1. Provisionamento (Terraform Apply)
+### 1. Provisionamento
 O Terraform gerenciou com sucesso a criação de 8 recursos integrados.
 ![Terraform Apply](img/Terminal1.png)
 
@@ -33,49 +38,57 @@ O Terraform gerenciou com sucesso a criação de 8 recursos integrados.
 Confirmação da instância `main-ec2-instance` em estado **Running**.
 ![AWS Console](img/Console1.png)
 
-### 3. Acesso Remoto (SSH)
-Sucesso no login via SSH no servidor nos **United States**, confirmando a integridade das chaves e das regras de firewall.
+### 3. Acesso Remoto SSH
+Sucesso no login via SSH no servidor nos **Estados Unidos**, confirmando a integridade das chaves e das regras de firewall.
 ![SSH Access](img/Terminal2.png)
 
 ---
 
-## 📖 Como Rodar
+## Como Rodar
 1. **Configurar AWS CLI:** Execute `aws configure`.
-2. **Variáveis:** Crie um arquivo `terraform.tfvars` com seu IP: `my_public_ip = "seu.ip.aqui"`.
+2. **Variáveis:** Crie um arquivo chamado `terraform.tfvars` na raiz do projeto para configurar seu acesso:
+    ```hcl
+    my_public_ip    = "1.2.3.4"
+    ```
 3. **Comandos:**
    ```bash
    terraform init
    terraform plan
-   terraform apply
+   terraform apply -auto-approve
 
 ## <a name="en-english"></a>English version:
 
-# AWS Infrastructure with Terraform (IaC)
+# AWS Infrastructure with Terraform
 
 ---
 
-This project demonstrates the deployment of a professional cloud infrastructure on **Amazon Web Services (AWS)** using **Terraform** as the **Infrastructure as Code (IaC)** tool.
+This project demonstrates the provisioning of a professional cloud infrastructure on **Amazon Web Services** using **Terraform** as an **Infrastructure as Code** tool.
 
-## 🏗️ Architecture Overview
-The infrastructure is deployed in the **us-east-1** region (**United States**) and includes:
-* **VPC:** Isolated virtual network with `10.0.0.0/16` CIDR block.
-* **Public Subnet:** `10.0.1.0/24` network segment with automatic public IP mapping.
-* **Internet Gateway:** To enable communication between the VPC and the internet.
-* **Security Group:** SSH (Port 22) restricted to my IP and HTTP (Port 80) open.
-* **EC2 Instance:** Ubuntu 24.04 LTS server running on `t3.micro` hardware (**Free Tier** eligible).
+### 1. Networking and Resilience
+* **VPC:** Implementation of an isolated CIDR `10.0.0.0/16` network.
+* **Dynamic Availability Zones:** Use of `Data Sources` for automatic selection of the availability zone.
+* **Connectivity:** Configuration of **Internet Gateway** and **Route Tables**.
 
-## 🛠️ Technologies & Tools
+### 2. Security
+* **IMDSv2:** Mandatory token configuration for accessing instance metadata.
+* **Security Groups:** SSH (Port 22) restricted to my IP and open HTTP (Port 80).
+* **Key Management:** Use of integrated **Key Pairs** (RSA/ED25519) for secure access via **SSH** through **WSL2 Ubuntu**.
+
+### 3. Compute and Automation
+* **EC2 Instance:** Provisioning of an **Ubuntu 24.04 LTS** server using dynamic AMI filters, running on `t3.micro` hardware - **Free Tier**.
+* **User Data Scripting:** Full automation of the Nginx server deployment during the instance's first boot.
+
+## Technologies and Tools
 * **Cloud:** AWS
 * **IaC:** Terraform
 * **Local OS:** Ubuntu 24.04 LTS via **WSL2** on Windows 10.
-* **Terminal:** **Windows Terminal**.
-* **Security:** **Windows Security** and SSH Keys (ED25519).
+* **Security:** **Windows Security** and SSH Keys (ED25519) stored in the Linux subsystem.
 
 ---
 
-## 📸 Visual Validation
+## Snapshots
 
-### 1. Provisioning (Terraform Apply)
+### 1. Provisioning
 Terraform successfully managed the creation of 8 integrated resources.
 ![Terraform Apply](img/Terminal1.png)
 
@@ -83,17 +96,20 @@ Terraform successfully managed the creation of 8 integrated resources.
 Confirmation of the `main-ec2-instance` in **Running** state.
 ![AWS Console](img/Console1.png)
 
-### 3. Remote Access (SSH)
-Successful SSH login to the server in the **United States**, confirming the integrity of keys and firewall rules.
+### 3. Remote Access SSH
+Successful SSH login to the server in the **United States**, confirming the integrity of the keys and firewall rules.
 ![SSH Access](img/Terminal2.png)
 
 ---
 
-## 📖 How to Run
-1. **AWS CLI Setup:** Run `aws configure` in your terminal.
-2. **Variables:** Create a `terraform.tfvars` file with your IP: `my_public_ip = "your.ip.here"`.
+## How to Run
+1. **Configure AWS CLI:** Run `aws configure`.
+2. **Variables:** Create a file named `terraform.tfvars` in the project root to configure your access:
+    ```hcl
+    my_public_ip    = "1.2.3.4"
+    ```
 3. **Commands:**
    ```bash
    terraform init
    terraform plan
-   terraform apply
+   terraform apply -auto-approve
