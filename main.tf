@@ -1,3 +1,18 @@
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"]
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
+  }
+}
+
+
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
@@ -19,7 +34,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "us-east-1a"
+  availability_zone       = data.aws_availability_zones.available.names[0]
 
   tags = {
     Name = "main-public-subnet"
@@ -80,16 +95,6 @@ ingress {
 resource "aws_key_pair" "deployer" {
   key_name   = "aws-key"
   public_key = file(var.public_key_path)
-}
-
-data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
-  }
 }
 
 resource "aws_instance" "web_server" {
