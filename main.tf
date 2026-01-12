@@ -113,6 +113,17 @@ resource "aws_instance" "web_server" {
     http_put_response_hop_limit = 1
   }
 
+  root_block_device {
+    volume_size           = 8
+    volume_type           = "gp3"
+    encrypted             = true
+    delete_on_termination = true
+
+    tags = {
+      Name = "main-ec2-disk"
+    }
+  }
+
   tags = {
     Name = "main-ec2-instance"
   }
